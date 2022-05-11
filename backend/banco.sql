@@ -10,3 +10,13 @@ create table ingredientes(
     primary key(id)
 
 );
+
+create table itens(
+
+    id int NOT NULL AUTO_INCREMENT,
+    nome varchar(200) NOT NULL,
+    descr varchar(200) NOT NULL,
+    ingr varchar(200) NOT NULL,
+    primary key(id)
+
+);
