@@ -20,3 +20,13 @@ create table itens(
     primary key(id)
 
 );
+
+create table cardapios(
+
+    id int NOT NULL AUTO_INCREMENT,
+    tipo varchar(200) NOT NULL,
+    dia date NOT NULL,
+    nutri varchar(200) NOT NULL,
+    primary key(id)
+
+);
