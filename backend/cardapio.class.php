@@ -15,6 +15,12 @@
         private $item_nome;
         private $item_descr;
         private $item_ingr;
+        
+        // variaveis dos cardapios
+        private $card_id;
+        private $card_tipo;
+        private $card_dia;
+        private $ingr_nutri;
 
         // gets ingredientes
         public function get_ingr_id(){
@@ -49,6 +55,23 @@
         public function get_item_ingr(){
             return $this->item_ingr;
         }
+        
+        // gets cardapios
+        public function get_card_id(){
+            return $this->card_id;
+        }
+
+        public function get_card_tipo(){
+            return $this->card_tipo;
+        }
+
+        public function get_card_dia(){
+            return $this->card_dia;
+        }
+
+        public function get_card_nutri(){
+            return $this->card_nutri;
+        }
 
         // sets ingredientes
         public function set_ingr_id($valor){
@@ -82,6 +105,23 @@
 
         public function set_item_ingr($valor){
             $this->item_ingr = $valor;
+        }
+        
+        // sets cardapios
+        public function set_card_id($valor){
+            $this->card_id = $valor;
+        }
+
+        public function set_card_tipo($valor){
+            $this->card_tipo = $valor;
+        }
+
+        public function set_card_dia($valor){
+            $this->card_dia = $valor;
+        }
+
+        public function set_card_nutri($valor){
+            $this->card_nutri = $valor;
         }
     
         // crud dos ingredientes
@@ -143,7 +183,7 @@
 
         }
 
-        public function ler_ingr(){
+        public function listar_ingr(){
 
             $pdo = $this->connect();
 
@@ -261,7 +301,7 @@
 
         }
 
-        public function ler_item(){
+        public function listar_item(){
 
             $pdo = $this->connect();
 
@@ -303,6 +343,124 @@
                 }else{
 
                     $sql = 'SELECT * FROM itens';
+
+                }
+
+                $pdo->prepare($sql);
+                    
+                    if($pesquisa != ''){
+
+                        $pdo->bindValue(':pesquisa', $pesquisa);
+                    
+                    }
+                    
+                $pdo->execute();
+                
+            $pdo = $this->disconnect();
+
+        }
+        
+        // crud dos cardapios
+        
+        public function inserir_cardapio(){
+
+            $pdo = $this->connect();
+
+                if($this->item_id !== null && $this->item_id != ''){
+
+                    $sql = 'ALTER TABLE cardapios
+                            tipo = :tipo, dia = :dia, nutri = :nutri
+                            WHERE id = :id';
+
+                }else{
+
+                    $sql = 'INSERT INTO cardapios
+                            (tipo, dia, nutri)
+                            VALUES(:tipo, :dia, :nutri)';
+
+                }
+
+                $pdo->prepare($sql);
+
+                    $pdo->bindValue(':tipo', $this->card_tipo);
+                    $pdo->bindValue(':dia', $this->card_dia);
+                    $pdo->bindValue(':nutri', $this->card_nutri);
+
+                    if($this->card_id !== null && $this->card_id != ''){
+
+                        $pdo->bindValue(':id', $this->card_id);
+
+                    }
+
+                $pdo->execute();
+                
+            $pdo = $this->disconnect();
+
+        }
+
+        public function excluir_cardapio(){
+
+            $pdo = $this->connect();
+
+                if($this->card_id !== null && $this->card_id != ''){
+
+                    $sql = 'DELETE FROM cardapios
+                            WHERE id = :id';
+
+                }
+
+                $pdo->prepare($sql);
+                        
+                    $pdo->bindValue(':id', $this->card_id);
+                    
+                $pdo->execute();
+                
+            $pdo = $this->disconnect();
+
+        }
+
+        public function listar_cardapio(){
+
+            $pdo = $this->connect();
+
+                if($this->card_id !== null && $this->card_id != ''){
+
+                    $sql = 'SELECT * FROM cardapios
+                            WHERE id = :id';
+
+                }else{
+
+                    $sql = 'SELECT * FROM cardapios';
+
+                }
+
+                $pdo->prepare($sql);
+                    
+                    if($this->card_id !== null && $this->card_id != ''){
+
+                        $pdo->bindValue(':id', $this->card_id);
+                    
+                    }
+                    
+                $pdo->execute();
+                
+            $pdo = $this->disconnect();
+
+        }
+        
+        public function busca_cardapio($pesquisa){
+
+            $pdo = $this->connect();
+
+                if($pesquisa != ''){
+
+                    $sql = 'SELECT * FROM cardapios
+                            WHERE tipo = :pesquisa
+                            OR dia = :pesquisa';
+
+                }else{
+
+                    $sql = 'SELECT * FROM cardapios';
 
                 }
 
