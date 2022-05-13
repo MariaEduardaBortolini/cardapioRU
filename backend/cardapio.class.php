@@ -206,9 +206,11 @@
                     
                     }
                     
-                $pdo->execute();
+                $resultado = $pdo->execute();
                 
             $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
         
@@ -236,9 +238,11 @@
                     
                     }
                     
-                $pdo->execute();
+                $resultado = $pdo->execute();
                 
             $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
         
@@ -324,9 +328,11 @@
                     
                     }
                     
-                $pdo->execute();
+                $resultado = $pdo->execute();
                 
             $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
         
@@ -354,9 +360,11 @@
                     
                     }
                     
-                $pdo->execute();
+                $resultado = $pdo->execute();
                 
             $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
         
@@ -442,9 +450,11 @@
                     
                     }
                     
-                $pdo->execute();
+                $resultado = $pdo->execute();
                 
             $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
         
@@ -472,9 +482,11 @@
                     
                     }
                     
-                $pdo->execute();
+                $resultado = $pdo->execute();
                 
             $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
         
