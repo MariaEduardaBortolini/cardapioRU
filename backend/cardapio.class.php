@@ -132,8 +132,8 @@
 
                 if($this->ingr_id !== null && $this->ingr_id != ''){
 
-                    $sql = 'ALTER TABLE ingredientes
-                            nome = :nome, descr = :descr, calorias = :calorias
+                    $sql = 'UPDATE ingredientes
+                            SET nome = :nome, descr = :descr, calorias = :calorias
                             WHERE id = :id';
 
                 }else{
@@ -234,7 +234,7 @@
                     
                     if($pesquisa != ''){
 
-                        $pdo->bindValue(':pesquisa', $pesquisa);
+                        $pdo->bindValue(':pesquisa', '%'.$pesquisa.'%');
                     
                     }
                     
@@ -254,8 +254,8 @@
 
                 if($this->item_id !== null && $this->item_id != ''){
 
-                    $sql = 'ALTER TABLE itens
-                            nome = :nome, descr = :descr, ingr = :ingr
+                    $sql = 'UPDATE itens
+                            SET nome = :nome, descr = :descr, ingr = :ingr
                             WHERE id = :id';
 
                 }else{
@@ -356,7 +356,7 @@
                     
                     if($pesquisa != ''){
 
-                        $pdo->bindValue(':pesquisa', $pesquisa);
+                        $pdo->bindValue(':pesquisa', '%'.$pesquisa.'%');
                     
                     }
                     
@@ -376,8 +376,8 @@
 
                 if($this->item_id !== null && $this->item_id != ''){
 
-                    $sql = 'ALTER TABLE cardapios
-                            tipo = :tipo, dia = :dia, nutri = :nutri
+                    $sql = 'UPDATE cardapios
+                            SET tipo = :tipo, dia = :dia, nutri = :nutri
                             WHERE id = :id';
 
                 }else{
@@ -478,7 +478,7 @@
                     
                     if($pesquisa != ''){
 
-                        $pdo->bindValue(':pesquisa', $pesquisa);
+                        $pdo->bindValue(':pesquisa', '%'.$pesquisa.'%');
                     
                     }
                     
@@ -487,6 +487,76 @@
             $pdo = $this->disconnect();
             
             return $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+        
+        // função de clonar cardápio e para verificar se a data de um cardápio já existe
+        
+        public function verificar_dia($dia){
+
+            $pdo = $this->connect();
+
+                $sql = 'SELECT *
+                        FROM cardapios
+                        WHERE dia = :dia';
+
+                $pdo->prepare($sql);
+
+                    $pdo->bindValue(':dia', $dia);
+                
+                $resultado = $pdo->execute();
+
+            $pdo = $this->disconnect();
+            
+            if($resultado->rowCount() > 0){
+                
+                return true;
+                
+            }else{
+                
+                return false;
+                
+            }
+
+        }
+
+        public function clonar_cardapio($dia_antigo, $dia_atual){
+
+            if($this->verificar_dia($dia_atual)){
+
+                $pdo = $this->connect();
+                
+                    $sql = 'SELECT *
+                            FROM cardapios
+                            WHERE dia = :dia';
+
+                    $pdo->prepare($sql);
+
+                        $pdo->bindValue(':dia', $dia_antigo);
+
+                    $resultados = $pdo->execute();
+                
+                $pdo = $this->disconnect();
+                
+                $resultados->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($resultados as $resultado){
+                    
+                    $this->set_card_tipo($resultado['tipo']);
+                    $this->set_card_nutri($resultado['tipo']);
+                    $this->set_card_dia($dia_atual);
+                    
+                    $this->inserir_cardapio();
+                    
+                }
+                
+                return true;
+
+            }else{
+            
+                return false;
+            
+            }
 
         }
         
