@@ -20,7 +20,7 @@
         private $card_id;
         private $card_tipo;
         private $card_dia;
-        private $ingr_nutri;
+        private $card_nutri;
 
         // gets ingredientes
         public function get_ingr_id(){
