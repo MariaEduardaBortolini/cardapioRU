@@ -508,7 +508,7 @@
 
             $pdo = $this->disconnect();
             
-            if($resultado->rowCount() > 0){
+            if($resultado->rowCount() == 0){
                 
                 return true;
                 
