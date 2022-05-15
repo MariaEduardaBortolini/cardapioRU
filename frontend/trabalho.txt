@@ -1,0 +1,10 @@
+Pelo diagrama, podemos ter mais de uma nutricionista, sendo que cada cardapio pode estar associado a apenas uma.
+
+Ver estrategia para usar um select para escolher a nutricionista no cardapio a partir da lista ja cadastrada.
+
+Para cadastrar os itens, como tem uma lista de ingredientes, vamos precisar de uma forma de, alem de escolher o nome, associar um ou mais ingredientes, e tambem como remover
+
+O mesmo ocorre com o cardapio, se informa o nome, data e nutricionista, depois tem que selecionar itens a partir da lista ja cadastrada.
+
+Alem de poder remover itens do cardapio.
+
