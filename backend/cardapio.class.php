@@ -144,19 +144,19 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
 
-                    $pdo->bindValue(':nome', $this->ingr_nome);
-                    $pdo->bindValue(':descr', $this->ingr_descr);
-                    $pdo->bindValue(':calorias', $this->ingr_calorias);
+                    $resultado->bindValue(':nome', $this->ingr_nome);
+                    $resultado->bindValue(':descr', $this->ingr_descr);
+                    $resultado->bindValue(':calorias', $this->ingr_calorias);
 
                     if($this->ingr_id !== null && $this->ingr_id != ''){
 
-                        $pdo->bindValue(':id', $this->ingr_id);
+                        $resultado->bindValue(':id', $this->ingr_id);
 
                     }
 
-                $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
 
@@ -173,11 +173,11 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                         
-                    $pdo->bindValue(':id', $this->ingr_id);
+                    $resultado->bindValue(':id', $this->ingr_id);
                     
-                $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
 
@@ -198,15 +198,15 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                     
                     if($this->ingr_id !== null && $this->ingr_id != ''){
 
-                        $pdo->bindValue(':id', $this->ingr_id);
+                        $resultado->bindValue(':id', $this->ingr_id);
                     
                     }
                     
-                $resultado = $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
             
@@ -230,15 +230,15 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                     
                     if($pesquisa != ''){
 
-                        $pdo->bindValue(':pesquisa', '%'.$pesquisa.'%');
+                        $resultado->bindValue(':pesquisa', '%'.$pesquisa.'%');
                     
                     }
                     
-                $resultado = $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
             
@@ -266,19 +266,19 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
 
-                    $pdo->bindValue(':nome', $this->item_nome);
-                    $pdo->bindValue(':descr', $this->item_descr);
-                    $pdo->bindValue(':ingr', $this->item_ingr);
+                    $resultado->bindValue(':nome', $this->item_nome);
+                    $resultado->bindValue(':descr', $this->item_descr);
+                    $resultado->bindValue(':ingr', $this->item_ingr);
 
                     if($this->item_id !== null && $this->item_id != ''){
 
-                        $pdo->bindValue(':id', $this->item_id);
+                        $resultado->bindValue(':id', $this->item_id);
 
                     }
 
-                $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
 
@@ -295,11 +295,11 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                         
-                    $pdo->bindValue(':id', $this->item_id);
+                    $resultado->bindValue(':id', $this->item_id);
                     
-                $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
 
@@ -320,15 +320,15 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                     
                     if($this->item_id !== null && $this->item_id != ''){
 
-                        $pdo->bindValue(':id', $this->item_id);
+                        $resultado->bindValue(':id', $this->item_id);
                     
                     }
                     
-                $resultado = $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
             
@@ -352,15 +352,15 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                     
                     if($pesquisa != ''){
 
-                        $pdo->bindValue(':pesquisa', '%'.$pesquisa.'%');
+                        $resultado->bindValue(':pesquisa', '%'.$pesquisa.'%');
                     
                     }
                     
-                $resultado = $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
             
@@ -388,19 +388,19 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
 
-                    $pdo->bindValue(':tipo', $this->card_tipo);
-                    $pdo->bindValue(':dia', $this->card_dia);
-                    $pdo->bindValue(':nutri', $this->card_nutri);
+                    $resultado->bindValue(':tipo', $this->card_tipo);
+                    $resultado->bindValue(':dia', $this->card_dia);
+                    $resultado->bindValue(':nutri', $this->card_nutri);
 
                     if($this->card_id !== null && $this->card_id != ''){
 
-                        $pdo->bindValue(':id', $this->card_id);
+                        $resultado->bindValue(':id', $this->card_id);
 
                     }
 
-                $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
 
@@ -417,11 +417,11 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                         
-                    $pdo->bindValue(':id', $this->card_id);
+                    $resultado->bindValue(':id', $this->card_id);
                     
-                $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
 
@@ -442,15 +442,15 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                     
                     if($this->card_id !== null && $this->card_id != ''){
 
-                        $pdo->bindValue(':id', $this->card_id);
+                        $resultado->bindValue(':id', $this->card_id);
                     
                     }
                     
-                $resultado = $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
             
@@ -474,15 +474,15 @@
 
                 }
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
                     
                     if($pesquisa != ''){
 
-                        $pdo->bindValue(':pesquisa', '%'.$pesquisa.'%');
+                        $resultado->bindValue(':pesquisa', '%'.$pesquisa.'%');
                     
                     }
                     
-                $resultado = $pdo->execute();
+                $resultado->execute();
                 
             $pdo = $this->disconnect();
             
@@ -500,11 +500,11 @@
                         FROM cardapios
                         WHERE dia = :dia';
 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
 
-                    $pdo->bindValue(':dia', $dia);
+                    $resultado->bindValue(':dia', $dia);
                 
-                $resultado = $pdo->execute();
+                $resultado->execute();
 
             $pdo = $this->disconnect();
             
@@ -530,20 +530,20 @@
                             FROM cardapios
                             WHERE dia = :dia';
 
-                    $pdo->prepare($sql);
+                    $resultado = $pdo->prepare($sql);
 
-                        $pdo->bindValue(':dia', $dia_antigo);
+                        $resultado->bindValue(':dia', $dia_antigo);
 
-                    $resultados = $pdo->execute();
+                    $resultados = $resultado->execute();
                 
                 $pdo = $this->disconnect();
                 
                 $resultados->fetchAll(PDO::FETCH_ASSOC);
                 
-                foreach($resultados as $resultado){
+                foreach($resultados as $resul){
                     
-                    $this->set_card_tipo($resultado['tipo']);
-                    $this->set_card_nutri($resultado['tipo']);
+                    $this->set_card_tipo($resul['tipo']);
+                    $this->set_card_nutri($resul['tipo']);
                     $this->set_card_dia($dia_atual);
                     
                     $this->inserir_cardapio();
