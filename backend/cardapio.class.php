@@ -10,6 +10,11 @@
         private $ingr_descr;
         private $ingr_calorias;
 
+        // variaveis das nutricionista
+        private $nutri_id;
+        private $nutri_nome;
+        private $nutri_cnr;
+
         // variaveis dos intens
         private $item_id;
         private $item_nome;
@@ -37,6 +42,19 @@
 
         public function get_ingr_calorias(){
             return $this->ingr_calorias;
+        }
+
+        // gets nutricionistas
+        public function get_nutri_id(){
+            return $this->nutri_id;
+        }
+
+        public function get_nutri_nome(){
+            return $this->nutri_nome;
+        }
+
+        public function get_nutri_cnr(){
+            return $this->nutri_cnr;
         }
 
         // gets itens
@@ -88,6 +106,19 @@
 
         public function set_ingr_calorias($valor){
             $this->ingr_calorias = $valor;
+        }
+
+        // sets nutricionistas
+        public function set_nutri_id($valor){
+            $this->nutri_id = $valor;
+        }
+
+        public function set_nutri_nome($valor){
+            $this->nutri_nome = $valor;
+        }
+
+        public function set_nutri_cnr($valor){
+            $this->nutri_cnr = $valor;
         }
 
         // sets itens
@@ -227,6 +258,127 @@
                 }else{
 
                     $sql = 'SELECT * FROM ingredientes';
+
+                }
+
+                $resultado = $pdo->prepare($sql);
+                    
+                    if($pesquisa != ''){
+
+                        $resultado->bindValue(':pesquisa', '%'.$pesquisa.'%');
+                    
+                    }
+                    
+                $resultado->execute();
+                
+            $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+
+        // crud das nutricionistas
+        
+        public function inserir_nutri(){
+
+            $pdo = $this->connect();
+
+                if($this->nutri_id !== null && $this->nutri_id != ''){
+
+                    $sql = 'UPDATE nutricionistas
+                            SET nome = :nome, cnr = :cnr
+                            WHERE id = :id';
+
+                }else{
+
+                    $sql = 'INSERT INTO nutricionistas
+                            (nome, cnr)
+                            VALUES(:nome, :cnr)';
+
+                }
+
+                $resultado = $pdo->prepare($sql);
+
+                    $resultado->bindValue(':nome', $this->nutri_nome);
+                    $resultado->bindValue(':cnr', $this->nutri_cnr);
+
+                    if($this->nutri_id !== null && $this->nutri_id != ''){
+
+                        $resultado->bindValue(':id', $this->nutri_id);
+
+                    }
+
+                $resultado->execute();
+                
+            $pdo = $this->disconnect();
+
+        }
+
+        public function excluir_nutri(){
+
+            $pdo = $this->connect();
+
+                if($this->nutri_id !== null && $this->nutri_id != ''){
+
+                    $sql = 'DELETE FROM nutricionistas
+                            WHERE id = :id';
+
+                }
+
+                $resultado = $pdo->prepare($sql);
+                        
+                    $resultado->bindValue(':id', $this->nutri_id);
+                    
+                $resultado->execute();
+                
+            $pdo = $this->disconnect();
+
+        }
+
+        public function listar_nutri(){
+
+            $pdo = $this->connect();
+
+                if($this->nutri_id !== null && $this->nutri_id != ''){
+
+                    $sql = 'SELECT * FROM nutricionistas
+                            WHERE id = :id';
+
+                }else{
+
+                    $sql = 'SELECT * FROM nutricionistas';
+
+                }
+
+                $resultado = $pdo->prepare($sql);
+                    
+                    if($this->nutri_id !== null && $this->nutri_id != ''){
+
+                        $resultado->bindValue(':id', $this->nutri_id);
+                    
+                    }
+                    
+                $resultado->execute();
+                
+            $pdo = $this->disconnect();
+            
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+        
+        public function busca_nutri($pesquisa){
+
+            $pdo = $this->connect();
+
+                if($pesquisa != ''){
+
+                    $sql = 'SELECT * FROM nutricionistas
+                            WHERE nome = :pesquisa
+                            OR cnr = :pesquisa';
+
+                }else{
+
+                    $sql = 'SELECT * FROM nutricionistas';
 
                 }
 
