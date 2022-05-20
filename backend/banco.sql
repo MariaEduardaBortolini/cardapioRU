@@ -11,6 +11,14 @@ create table ingredientes(
 
 );
 
+create table nutricionistas(
+
+    id int NOT NULL AUTO_INCREMENT,
+    nome varchar(200) NOT NULL,
+    crn varchar(20),
+    primary key(id)
+);
+
 create table itens(
 
     id int NOT NULL AUTO_INCREMENT,

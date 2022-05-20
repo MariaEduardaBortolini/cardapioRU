@@ -286,21 +286,21 @@
                 if($this->nutri_id !== null && $this->nutri_id != ''){
 
                     $sql = 'UPDATE nutricionistas
-                            SET nome = :nome, cnr = :cnr
+                            SET nome = :nome, crn = :crn
                             WHERE id = :id';
 
                 }else{
 
                     $sql = 'INSERT INTO nutricionistas
-                            (nome, cnr)
-                            VALUES(:nome, :cnr)';
+                            (nome, crn)
+                            VALUES(:nome, :crn)';
 
                 }
 
                 $resultado = $pdo->prepare($sql);
 
                     $resultado->bindValue(':nome', $this->nutri_nome);
-                    $resultado->bindValue(':cnr', $this->nutri_cnr);
+                    $resultado->bindValue(':crn', $this->nutri_crn);
 
                     if($this->nutri_id !== null && $this->nutri_id != ''){
 
@@ -374,7 +374,7 @@
 
                     $sql = 'SELECT * FROM nutricionistas
                             WHERE nome = :pesquisa
-                            OR cnr = :pesquisa';
+                            OR crn = :pesquisa';
 
                 }else{
 

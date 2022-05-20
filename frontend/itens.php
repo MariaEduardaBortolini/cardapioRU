@@ -1,6 +1,6 @@
 <?php
 
-    include 'cardapio.class.php';
+    include '../backend/cardapio.class.php';
 
 ?>
 <!doctype html>
@@ -29,16 +29,16 @@
                             <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cardapio.html">Cardápio</a>
+                            <a class="nav-link" href="cardapios.php">Cardápio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="itens.html">Itens</a>
+                            <a class="nav-link active" href="itens.php">Itens</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nutricionistas.html">Nutricionistas</a>
+                            <a class="nav-link" href="nutricionistas.php">Nutricionistas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="usuarios.html">Usuários</a>
+                            <a class="nav-link" href="usuarios.php">Usuários</a>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -54,7 +54,7 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Itens</h1>
                 <div class="pull-right"> 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Novo
                     </button>
                 </div>
@@ -97,7 +97,7 @@
                                     <label for="descr" class="form-label">Descrição</label>
                                     <input type="text" class="form-control" id="descr" placeholder="Informe a descrição">
                                 </div>
-                                <div class="mb-3" id="select_ingr">
+                                <div class="mb-3" id="select_ingr"> 
                                     <label for="ingrs" class="form-label">Ingredientes</label>
                                     <button class="btn" id="mais">Adiconar Mais</button>
                                     <select class="form-control ingrs" id="ingr0">
@@ -118,7 +118,7 @@
 
                                         ?>
                                     </select>
-                                </div>
+                                </div> 
                                 <input type="hidden" name="ingr" id="ingr">
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>

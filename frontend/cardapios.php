@@ -1,3 +1,9 @@
+<?php
+
+    include '../backend/cardapio.class.php';
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -24,16 +30,16 @@
                             <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="cardapio.html">Cardápio</a>
+                            <a class="nav-link active" href="cardapios.php">Cardápio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="itens.html">Itens</a>
+                            <a class="nav-link" href="itens.php">Itens</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nutricionistas.html">Nutricionistas</a>
+                            <a class="nav-link" href="nutricionistas.php">Nutricionistas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="usuarios.html">Usuários</a>
+                            <a class="nav-link" href="usuarios.php">Usuários</a>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -48,7 +54,7 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Cardápios</h1>
                 <div class="pull-right"> 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Novo
                     </button>
                 </div>
@@ -126,7 +132,7 @@
                                                     
                                                 $card = new cardapio();
 
-                                                $itens = $card->listar_itens();
+                                                $itens = $card->listar_item();
 
                                                 foreach($itens as $item){
 

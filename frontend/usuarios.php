@@ -24,16 +24,16 @@
                             <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cardapio.html">Cardápio</a>
+                            <a class="nav-link" href="cardapios.php">Cardápio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="itens.html">Itens</a>
+                            <a class="nav-link" href="itens.php">Itens</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nutricionistas.html">Nutricionistas</a>
+                            <a class="nav-link" href="nutricionistas.php">Nutricionistas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="usuarios.html">Usuários</a>
+                            <a class="nav-link active" href="usuarios.php">Usuários</a>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -45,9 +45,8 @@
         </nav>
 
         <main class="container">
-
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Itens</h1>
+                <h1 class="h2">Usuários</h1>
                 <div class="pull-right"> 
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Novo
@@ -59,8 +58,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Descrição</th>
-                            <th>Calorias</th>
+                            <th>Nome</th>
+                            <th>Email</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -79,13 +78,21 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Itens</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Usuários</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="nome" class="form-label">Descrição</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Informe a descrição">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Informe o nome">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="Informe o email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="text" class="form-control" id="senha" placeholder="Informe a senha">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
