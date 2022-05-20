@@ -1,6 +1,16 @@
 create database cardapio_if;
 use cardapio_if;
 
+create table usuarios(
+
+    id int NOT NULL AUTO_INCREMENT,
+    nome varchar(200) NOT NULL,
+    email varchar(200) NOT NULL,
+    senha varchar(200) NOT NULL,
+    primary key(id)
+
+);
+
 create table ingredientes(
 
     id int NOT NULL AUTO_INCREMENT,
@@ -15,7 +25,7 @@ create table nutricionistas(
 
     id int NOT NULL AUTO_INCREMENT,
     nome varchar(200) NOT NULL,
-    crn varchar(20),
+    crn varchar(200) NOT NULL,
     primary key(id)
 );
 
