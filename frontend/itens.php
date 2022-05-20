@@ -17,37 +17,10 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Restaurante</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cardapios.php">Cardápio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="itens.php">Itens</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="nutricionistas.php">Nutricionistas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="usuarios.php">Usuários</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+        
+        <?php
+            include_once 'header.php';
+        ?>
 
         <main class="container">
 
@@ -64,12 +37,75 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Nome</th>
                             <th>Descrição</th>
-                            <th>Calorias</th>
+                            <th>Ingredientes</th>
+                            <th>Calorias Totais</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        
+                        <?php
+                            
+                            $card = new cardapio();
+                        
+                            $ingredientes = $card->listar_ingr();
+                            
+                            $itens = $card->listar_item();
+                        
+                            foreach($itens as $item){
+                        ?>
+                        
+                        <tr>
+                            <td><?php echo $item['nome']; ?></td>
+                            <td><?php echo $item['descr']; ?></td>
+                            <td>
+                                <?php
+                                
+                                    $array = json_decode($item['ingr'], true);
+
+                                    $c = 1;
+                                    $soma_calorias = 0;
+
+                                    foreach($array as $id_ingr){
+
+                                        $d = '';
+                                        
+                                        $card->set_ingr_id($id_ingr);
+                                        
+                                        $resul = $card->listar_ingr();
+                                        
+                                        foreach($resul as $r){
+                                            
+                                            $d .= $r['nome'].' ('.$r['calorias'].')';
+                                            $soma_calorias = $soma_calorias + $r['calorias'];
+
+                                            if($c < sizeof($array)){
+                                                
+                                                $d .= ', ';
+
+                                            }
+                                            
+                                            $c++;
+                                        
+                                        }
+
+                                        echo $d;
+                                        
+                                    }
+                                
+                                ?>
+                            </td>
+                            <td><?php echo $soma_calorias; ?></td>
+                            <td>Ações</td>
+                        </tr>
+                        
+                        <?php
+                            }
+                        ?>
+                        
+                    </tbody>
                 </table>
             </div>
 
@@ -91,11 +127,11 @@
                             <form method="POST" action="../backend/salvar_item.php">
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="nome" placeholder="Informe o nome">
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome">
                                 </div>
                                 <div class="mb-3">
                                     <label for="descr" class="form-label">Descrição</label>
-                                    <input type="text" class="form-control" id="descr" placeholder="Informe a descrição">
+                                    <input type="text" class="form-control" id="descr" name="descr" placeholder="Informe a descrição">
                                 </div>
                                 <div class="mb-3" id="select_ingr"> 
                                     <label for="ingrs" class="form-label">Ingredientes</label>
@@ -103,10 +139,6 @@
                                     <select class="form-control ingrs" id="ingr0">
                                         <option value="0" selected>Selecione um ingrediente</option>
                                         <?php
-                                            
-                                            $card = new cardapio();
-
-                                            $ingredientes = $card->listar_ingr();
 
                                             foreach($ingredientes as $ingrediente){
 
@@ -161,7 +193,9 @@
                 }
                 
                 for (let i = 0; i < ingr_array.length; i++) {
-                    novo_json[i] = ingr_array[i].value;
+                    if(ingr_array[i].value != 0){
+                        novo_json[i] = ingr_array[i].value;
+                    }
                 }
 
                 document.getElementById('ingr').value = JSON.stringify(novo_json);
