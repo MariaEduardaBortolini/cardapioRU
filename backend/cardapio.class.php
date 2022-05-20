@@ -13,7 +13,7 @@
         // variaveis das nutricionista
         private $nutri_id;
         private $nutri_nome;
-        private $nutri_cnr;
+        private $nutri_crn;
 
         // variaveis dos intens
         private $item_id;
@@ -53,8 +53,8 @@
             return $this->nutri_nome;
         }
 
-        public function get_nutri_cnr(){
-            return $this->nutri_cnr;
+        public function get_nutri_crn(){
+            return $this->nutri_crn;
         }
 
         // gets itens
@@ -117,8 +117,8 @@
             $this->nutri_nome = $valor;
         }
 
-        public function set_nutri_cnr($valor){
-            $this->nutri_cnr = $valor;
+        public function set_nutri_crn($valor){
+            $this->nutri_crn = $valor;
         }
 
         // sets itens
