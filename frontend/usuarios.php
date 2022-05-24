@@ -54,23 +54,25 @@
                             <h5 class="modal-title" id="exampleModalLabel">Usuários</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body">   
+                        <form method="POST" action="../backend/salvar_usuario.php"> 
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Informe o nome">
+                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" placeholder="Informe o email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="senha" class="form-label">Senha</label>
-                                <input type="text" class="form-control" id="senha" placeholder="Informe a senha">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="salvar" type="button" class="btn btn-success">Salvar</button>
-                            </div>
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" class="form-control" name="email" id="email" placeholder="Informe o email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="senha" class="form-label">Senha</label>
+                                    <input type="text" class="form-control" name="senha" id="senha" placeholder="Informe a senha">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                    <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
+                                </div>
+                            </form>    
                         </div>
                     </div>
                 </div>
@@ -82,3 +84,4 @@
         <script src="scripts.js"></script>
     </body>
 </html>
+
