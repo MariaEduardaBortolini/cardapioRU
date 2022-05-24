@@ -39,6 +39,7 @@
                         <tr>
                             <th>Tipo</th>
                             <th>Data</th>
+			    <th>Nutricionista</th>
                             <th>Itens</th>
                             <th>Calorias Totais</th>
                             <th>Ações</th>
@@ -54,12 +55,29 @@
                             $ingredientes = $infos->listar_ingr();
                                 
                             $itens = $infos->listar_item();
+			    
+			    $nutris = $infos->listar_nutri();
                             
                             foreach($cardapios as $cardapio){
                         ?>
                         <tr>
                             <td><?php echo $cardapio['tipo']; ?></td>
                             <td><?php echo $cardapio['dia']; ?></td>
+			    <td>
+				<?php
+				    
+				    $infos->set_nutri_id($cardapio['nutri']);
+				    
+				    $resul = $infos->listar_nutri();
+				    
+				    foreach($resul as $r){
+				    
+				    	echo $r['nome']. ', CRN: ' .$r['crn'];
+					    
+				    }
+				    
+				?>
+			    </td>
                             <td>
                                 <?php
                                 
@@ -172,8 +190,6 @@
                                         <select class="form-control" id="nutri" name="nutri">
                                             <option value="0" selected>Selecione uma nutricionista</option>
                                             <?php
-                                                
-                                                $nutris = $infos->listar_nutri();
 
                                                 foreach($nutris as $nutri){
 
