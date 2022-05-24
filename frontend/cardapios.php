@@ -39,11 +39,103 @@
                         <tr>
                             <th>Tipo</th>
                             <th>Data</th>
-                            <th>Calorias</th>
+                            <th>Itens</th>
+                            <th>Calorias Totais</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <?php
+                                
+                            $infos = new cardapio();
+
+                            $cardapios = $infos->listar_card();
+                            
+                            $ingredientes = $infos->listar_ingr();
+                                
+                            $itens = $infos->listar_item();
+                            
+                            foreach($cardapios as $cardapio){
+                        ?>
+                        <tr>
+                            <td><?php echo $cardapio['tipo']; ?></td>
+                            <td><?php echo $cardapio['dia']; ?></td>
+                            <td>
+                                <?php
+                                
+                                    $array = json_decode($cardapio['itens'], true);
+
+                                    $c = 1;
+
+                                    foreach($array as $id_item){
+
+                                        $d = '';
+                                        
+                                        $infos->set_item_id($id_item);
+                                        
+                                        $resul = $infos->listar_item();
+                                        
+                                        foreach($resul as $r){
+                                            
+                                            $d .= $r['nome'];
+
+                                            $array2 = json_decode($resul['ingr'], true);
+
+                                            //$k = 1;
+                                            $soma_calorias = 0;
+
+                                            foreach($array2 as $id_ingr){
+
+                                                //$f = '';
+                                                
+                                                $infos->set_ingr_id($id_ingr);
+                                                
+                                                $resul2 = $infos->listar_ingr();
+                                                
+                                                foreach($resul2 as $r2){
+                                                    
+                                                    //$f .= $r2['nome'].' ('.$r2['calorias'].')';
+                                                    $soma_calorias = $soma_calorias + $r2['calorias'];
+
+                                                    /*
+                                                    if($k < sizeof($array)){
+                                                        
+                                                        $f .= ', ';
+
+                                                    }
+                                                    
+                                                    $k++;
+                                                    */
+                                                
+                                                }
+
+                                                //echo $f;
+                                                
+                                            }
+
+                                            if($c < sizeof($array)){
+                                                
+                                                $d .= ', ';
+
+                                            }
+                                            
+                                            $c++;
+                                        
+                                        }
+
+                                        echo $d;
+                                        
+                                    }
+                                
+                                ?>
+                            </td>
+                            <td><?php echo $soma_calorias; ?></td>
+                            <td></td>
+                        </tr>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
                 </table>
             </div>
 	
@@ -80,10 +172,8 @@
                                         <select class="form-control" id="nutri" name="nutri">
                                             <option value="0" selected>Selecione uma nutricionista</option>
                                             <?php
-                                                    
-                                                $card = new cardapio();
-
-                                                $nutris = $card->listar_nutri();
+                                                
+                                                $nutris = $infos->listar_nutri();
 
                                                 foreach($nutris as $nutri){
 
@@ -102,10 +192,8 @@
                                         <select class="form-control itens" id="item0">
                                             <option value="0" selected>Selecione um item</option>
                                             <?php
-                                                    
-                                                $card = new cardapio();
 
-                                                $itens = $card->listar_item();
+                                                $infos->set_item_id('');
 
                                                 foreach($itens as $item){
 
