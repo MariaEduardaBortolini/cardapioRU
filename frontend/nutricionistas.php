@@ -55,18 +55,20 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Informe o nome">
-                            </div>
-                            <div class="mb-3">
-                                <label for="crn" class="form-label">CRN</label>
-                                <input type="text" class="form-control" id="crn" placeholder="Informe o CRN">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                <button id="salvar" type="button" class="btn btn-success">Salvar</button>
-                            </div>
+                            <form method="POST" action="../backend/salvar_nutricionista.php">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="crn" class="form-label">CRN</label>
+                                    <input type="text" class="form-control" name="crn" id="crn" placeholder="Informe o CRN">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                    <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
