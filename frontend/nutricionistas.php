@@ -1,3 +1,9 @@
+<?php
+
+    include '../backend/cardapio.class.php';
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -36,7 +42,31 @@
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+
+                    <?php
+                            
+                            $card = new cardapio();
+                        
+                            $nutricionistas = $card->listar_nutri();
+                            
+                            $itens = $card-> listar_nutri();
+                        
+                            foreach($itens as $item){
+                        ?>
+                        
+                        <tr>
+                            <td><?php echo $item['nome']; ?></td>
+                            <td><?php echo $item['crn']; ?></td>
+                            <td>Ações</td>
+                        </tr>
+                        
+                        <?php
+                            }
+                        ?>
+
+
+                    </tbody>
                 </table>
             </div>
 
