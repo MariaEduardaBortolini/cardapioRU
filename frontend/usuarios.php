@@ -1,3 +1,8 @@
+<?php
+
+    include '../backend/usuario.class.php';
+
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -36,7 +41,28 @@
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                    <?php
+                            
+                            $card = new usuario();
+                        
+                            $usuario = $card->listar();
+                            
+                            $itens = $card-> listar();
+                        
+                            foreach($itens as $item){
+                        ?>
+                        
+                        <tr>
+                            <td><?php echo $item['nome']; ?></td>
+                            <td><?php echo $item['email']; ?></td>
+                            <td>Ações</td>
+                        </tr>
+                        
+                        <?php
+                            }
+                        ?>
+                    </tbody>
                 </table>
             </div>
 
