@@ -58,6 +58,7 @@
                             <td><?php echo $ingrediente['nome']; ?></td>
                             <td><?php echo $ingrediente['descr']; ?></td>
                             <td><?php echo $ingrediente['calorias']; ?></td>
+                            <td><a href="../backend/excluir_ingrediente.php?id=<?php echo $ingrediente['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
                         </tr>
                         
                         <?php
