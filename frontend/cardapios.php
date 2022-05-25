@@ -50,13 +50,13 @@
                                 
                             $infos = new cardapio();
 
-                            $cardapios = $infos->listar_card();
+                            $cardapios = $infos->listar_cardapio();
                             
                             $ingredientes = $infos->listar_ingr();
                                 
                             $itens = $infos->listar_item();
 			    
-			    $nutris = $infos->listar_nutri();
+			                $nutris = $infos->listar_nutri();
                             
                             foreach($cardapios as $cardapio){
                         ?>
@@ -97,7 +97,7 @@
                                             
                                             $d .= $r['nome'];
 
-                                            $array2 = json_decode($resul['ingr'], true);
+                                            $array2 = json_decode($r['ingr'], true);
 
                                             //$k = 1;
                                             $soma_calorias = 0;
@@ -175,7 +175,7 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="tipo" class="form-label">Tipo</label>
-                                        <select class="form-control itens" id="tipo" name="tipo">
+                                        <select class="form-control" id="tipo" name="tipo">
                                             <option value="cafe">Café da Manhã</option>
                                             <option value="almoco">Almoço</option>
                                             <option value="janta">Janta</option>
@@ -203,7 +203,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3" id="select_item">
-                                        <label for="itens" class="form-label">Ingredientes</label>
+                                        <label for="itens" class="form-label">Itens</label>
                                         <button class="btn" id="mais">Adiconar Mais</button>
                                         <select class="form-control itens" id="item0">
                                             <option value="0" selected>Selecione um item</option>
@@ -225,7 +225,7 @@
                                     <input type="hidden" name="item" id="item">
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                        <button id="salvar" type="button" class="btn btn-success">Salvar</button>
+                                        <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </form>
                         </div>
@@ -264,7 +264,9 @@
                 }
                 
                 for (let i = 0; i < item_array.length; i++) {
-                    novo_json[i] = item_array[i].value;
+                    if(item_array[i].value != 0){
+                        novo_json[i] = item_array[i].value;
+                    }
                 }
 
                 document.getElementById('item').value = JSON.stringify(novo_json);
