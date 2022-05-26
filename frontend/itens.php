@@ -98,7 +98,7 @@
                                 ?>
                             </td>
                             <td><?php echo $soma_calorias; ?></td>
-                            <td>Ações</td>
+                            <td><a href="../backend/excluir_item.php?id=<?php echo $item['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
                         </tr>
                         
                         <?php

@@ -1,6 +1,8 @@
 <?php
 
-    class usuario{
+    include_once 'conn.class.php';
+
+    class usuario extends conn{
 
         private $id;
         private $nome;

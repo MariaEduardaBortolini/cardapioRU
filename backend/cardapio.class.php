@@ -24,6 +24,7 @@
         // variaveis dos cardapios
         private $card_id;
         private $card_tipo;
+        private $card_itens;
         private $card_dia;
         private $card_nutri;
 
@@ -81,6 +82,10 @@
 
         public function get_card_tipo(){
             return $this->card_tipo;
+        }
+
+        public function get_card_itens(){
+            return $this->card_itens;
         }
 
         public function get_card_dia(){
@@ -145,6 +150,10 @@
 
         public function set_card_tipo($valor){
             $this->card_tipo = $valor;
+        }
+
+        public function set_card_itens($valor){
+            $this->card_itens = $valor;
         }
 
         public function set_card_dia($valor){
@@ -529,14 +538,14 @@
                 if($this->item_id !== null && $this->item_id != ''){
 
                     $sql = 'UPDATE cardapios
-                            SET tipo = :tipo, dia = :dia, nutri = :nutri
+                            SET tipo = :tipo, dia = :dia, itens = :itens, nutri = :nutri
                             WHERE id = :id';
 
                 }else{
 
                     $sql = 'INSERT INTO cardapios
-                            (tipo, dia, nutri)
-                            VALUES(:tipo, :dia, :nutri)';
+                            (tipo, dia, itens, nutri)
+                            VALUES(:tipo, :dia, :itens, :nutri)';
 
                 }
 
@@ -544,6 +553,7 @@
 
                     $resultado->bindValue(':tipo', $this->card_tipo);
                     $resultado->bindValue(':dia', $this->card_dia);
+                    $resultado->bindValue(':itens', $this->card_itens);
                     $resultado->bindValue(':nutri', $this->card_nutri);
 
                     if($this->card_id !== null && $this->card_id != ''){
@@ -618,7 +628,9 @@
 
                     $sql = 'SELECT * FROM cardapios
                             WHERE tipo = :pesquisa
-                            OR dia = :pesquisa';
+                            OR dia = :pesquisa
+                            OR itens = :pesquisa
+                            OR nutri = :pesquisa';
 
                 }else{
 
@@ -695,7 +707,8 @@
                 foreach($resultados as $resul){
                     
                     $this->set_card_tipo($resul['tipo']);
-                    $this->set_card_nutri($resul['tipo']);
+                    $this->set_card_nutri($resul['nutri']);
+                    $this->set_card_itens($resul['itens']);
                     $this->set_card_dia($dia_atual);
                     
                     $this->inserir_cardapio();

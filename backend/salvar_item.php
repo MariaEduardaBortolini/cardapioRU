@@ -14,4 +14,6 @@
 
     }
 
+    header('location: ../frontend/itens.php');
+
 ?>
