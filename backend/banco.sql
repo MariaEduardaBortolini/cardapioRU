@@ -49,3 +49,6 @@ create table cardapios(
     primary key(id)
 
 );
+
+
+INSERT INTO usuarios (nome, email, senha) VALUES ('Usuário', 'user@gmail.com', 'user');
