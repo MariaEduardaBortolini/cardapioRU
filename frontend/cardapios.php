@@ -2,6 +2,14 @@
 
     include '../backend/cardapio.class.php';
 
+    session_start();
+
+    if($_SESSION['logado'] !== true){
+
+        header('location: login.php');
+
+    }
+
 ?>
 
 <!doctype html>
@@ -20,7 +28,7 @@
     <body>
         
 	<?php
-	    include_once 'header.php';    
+	    include_once 'header.php';
 	?>
 
         <main class="container">
@@ -39,7 +47,7 @@
                         <tr>
                             <th>Tipo</th>
                             <th>Data</th>
-			    <th>Nutricionista</th>
+                            <th>Nutricionista</th>
                             <th>Itens</th>
                             <th>Calorias Totais</th>
                             <th>Ações</th>
@@ -63,21 +71,21 @@
                         <tr>
                             <td><?php echo $cardapio['tipo']; ?></td>
                             <td><?php echo $cardapio['dia']; ?></td>
-			    <td>
-				<?php
-				    
-				    $infos->set_nutri_id($cardapio['nutri']);
-				    
-				    $resul = $infos->listar_nutri();
-				    
-				    foreach($resul as $r){
-				    
-				    	echo $r['nome']. ', CRN: ' .$r['crn'];
-					    
-				    }
-				    
-				?>
-			    </td>
+                            <td>
+                            <?php
+                                
+                                $infos->set_nutri_id($cardapio['nutri']);
+                                
+                                $resul = $infos->listar_nutri();
+                                
+                                foreach($resul as $r){
+                                
+                                    echo $r['nome']. ', CRN: ' .$r['crn'];
+                                    
+                                }
+                                
+                            ?>
+                            </td>
                             <td>
                                 <?php
                                 
@@ -148,7 +156,7 @@
                                 ?>
                             </td>
                             <td><?php echo $soma_calorias; ?></td>
-                            <td></td>
+                            <td><a href="../backend/excluir_cardapio.php?id=<?php echo $cardapio['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
                         </tr>
                         <?php
                             }
