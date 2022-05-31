@@ -2,6 +2,14 @@
 
     include '../backend/cardapio.class.php';
 
+    session_start();
+
+    if($_SESSION['logado'] !== true){
+
+        header('location: login.php');
+
+    }
+
 ?>
 <!doctype html>
 <html lang="en">
