@@ -42,11 +42,11 @@
                         FROM usuarios
                         WHERE email = :email';
                 
-                $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
 
-                    $pdo->bindValue(':email', $this->email);
+                    $resultado->bindValue(':email', $this->email);
 
-                $resultado = $pdo->execute();
+                $resultado->execute();
 
             $pdo = $this->disconnect();
 
