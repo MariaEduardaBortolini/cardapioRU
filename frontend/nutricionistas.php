@@ -2,6 +2,14 @@
 
     include '../backend/cardapio.class.php';
 
+    session_start();
+
+    if($_SESSION['logado'] !== true){
+
+        header('location: login.php');
+
+    }
+
 ?>
 
 <!doctype html>
@@ -58,7 +66,7 @@
                         <tr>
                             <td><?php echo $item['nome']; ?></td>
                             <td><?php echo $item['crn']; ?></td>
-                            <td>Ações</td>
+                            <td><a href="../backend/excluir_item.php?id=<?php echo $item['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
                         </tr>
                         
                         <?php
