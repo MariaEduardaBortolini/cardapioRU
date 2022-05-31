@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cardapios.php">Cardápio</a>
@@ -16,19 +16,22 @@
                     <a class="nav-link" href="itens.php">Itens</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ingredientes.php">Ingredientes</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="nutricionistas.php">Nutricionistas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="usuarios.php">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ingredientes.php">Ingredientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cadastro.php" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastre-se</a>
                 </li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
             </form>
-        </div>
-    </div>
-</nav>
+                </div>
+            </div>
+        </nav>
