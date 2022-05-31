@@ -2,6 +2,14 @@
 
     include '../backend/usuario.class.php';
 
+    session_start();
+
+    if($_SESSION['logado'] !== true){
+
+        header('location: login.php');
+
+    }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,17 +54,15 @@
                             
                             $card = new usuario();
                         
-                            $usuario = $card->listar();
-                            
-                            $itens = $card-> listar();
+                            $usuarios = $card->listar();
                         
-                            foreach($itens as $item){
+                            foreach($usuarios as $usuario){
                         ?>
                         
                         <tr>
-                            <td><?php echo $item['nome']; ?></td>
-                            <td><?php echo $item['email']; ?></td>
-                            <td>Ações</td>
+                            <td><?php echo $usuario['nome']; ?></td>
+                            <td><?php echo $usuario['email']; ?></td>
+                            <td><a href="../backend/excluir_usuario.php?id=<?php echo $usuario['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
                         </tr>
                         
                         <?php
@@ -110,4 +116,3 @@
         <script src="scripts.js"></script>
     </body>
 </html>
-
