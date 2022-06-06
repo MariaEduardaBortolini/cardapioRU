@@ -33,11 +33,13 @@
         <main class="container">
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Itens</h1>
+                <h1 class="h2">Ingredientes</h1>
                 <div class="pull-right"> 
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Novo
-                    </button>
+                    <a href="cadastro_ingredientes.php">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            Novo
+                        </button>
+                    </a>
                 </div>
             </div>			
 
@@ -66,7 +68,12 @@
                             <td><?php echo $ingrediente['nome']; ?></td>
                             <td><?php echo $ingrediente['descr']; ?></td>
                             <td><?php echo $ingrediente['calorias']; ?></td>
-                            <td><a href="../backend/excluir_ingrediente.php?id=<?php echo $ingrediente['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
+                            <td>
+                                <form method="POST" action="../backend/excluir_ingrediente.php">
+                                    <input type="hidden" name="id" value="<?php echo $ingrediente['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
+                            </td>
                         </tr>
                         
                         <?php
@@ -81,39 +88,7 @@
                 <div class="d-flex justify-content-between py-4 my-4 border-top">
                     <p>&copy; 2022 Company, Inc. All rights reserved.</p>
                 </div>
-            </footer>						
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Itens</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="../backend/salvar_ingrediente.php">
-                                <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="descr" class="form-label">Descrição</label>
-                                    <textarea name="descr" class="form-control" placeholder="Informe uma descrição"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="calorias" class="form-label">Calorias</label>
-                                    <input type="number" class="form-control" id="calorias" name="calorias" placeholder="Informe as calorias">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                    <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </footer>
 
         </main>
 
