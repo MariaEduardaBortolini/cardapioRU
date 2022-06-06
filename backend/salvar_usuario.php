@@ -14,4 +14,6 @@
 
     }
 
+    header('Location: ../frontend/usuarios.php');
+
 ?>
