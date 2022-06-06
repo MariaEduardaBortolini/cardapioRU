@@ -36,30 +36,31 @@
             <div class="col bg-light p-5 rounded">
                 <h1>Cadastro Usuários</h1>
                 <form method="POST" action="../backend/salvar_usuario.php"> 
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
-                            </div>
-                            <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Informe o email">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="senha" class="form-label">Senha</label>
-                                    <input type="text" class="form-control" name="senha" id="senha" placeholder="Informe a senha">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                    <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
-                                </div>
-                            </form> 
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Informe o email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="text" class="form-control" name="senha" id="senha" placeholder="Informe a senha">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form> 
             </div>
 			
             <footer class="py-5">
                 <div class="d-flex justify-content-between py-4 my-4 border-top">
                     <p>&copy; 2022 Company, Inc. All rights reserved.</p>
                 </div>
-            </footer>			
+            </footer>
+            
         </main>
 
     </body>
