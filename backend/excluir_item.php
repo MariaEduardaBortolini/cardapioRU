@@ -2,11 +2,11 @@
 
     include_once 'cardapio.class.php';
 
-    if(isset($_GET['id'])){
+    if(isset($_POST['id'])){
 
         $item = new cardapio();
 
-            $item->set_item_id($_GET['id']);
+            $item->set_item_id($_POST['id']);
 
         $item->excluir_item();
 
