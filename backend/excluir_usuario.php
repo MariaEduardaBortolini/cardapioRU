@@ -3,8 +3,8 @@
     include_once 'usuario.class.php';
 
     if(isset($_POST['id'])){
-
-        $usuario = new cardapio();
+        
+        $usuario = new usuario();
 
             $usuario->set_id($_POST['id']);
 
