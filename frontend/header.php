@@ -24,9 +24,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="ingredientes.php">Ingredientes</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cadastro.php" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastre-se</a>
-                </li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
