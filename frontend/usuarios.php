@@ -33,10 +33,12 @@
         <main class="container">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Usuários</h1>
-                <div class="pull-right"> 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Novo
-                    </button>
+                <div class="pull-right">
+                    <a href="cadastro_usuarios.php">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            Novo
+                        </button>
+                    </a>
                 </div>
             </div>			
 
@@ -62,7 +64,12 @@
                         <tr>
                             <td><?php echo $usuario['nome']; ?></td>
                             <td><?php echo $usuario['email']; ?></td>
-                            <td><a href="../backend/excluir_usuario.php?id=<?php echo $usuario['id'] ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a></td>
+                            <td>
+                                <form method="POST" action="../backend/excluir_usuario.php">
+                                    <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
+                            </td>
                         </tr>
                         
                         <?php
@@ -76,39 +83,7 @@
                 <div class="d-flex justify-content-between py-4 my-4 border-top">
                     <p>&copy; 2022 Company, Inc. All rights reserved.</p>
                 </div>
-            </footer>						
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Usuários</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">   
-                        <form method="POST" action="../backend/salvar_usuario.php"> 
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
-                            </div>
-                            <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Informe o email">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="senha" class="form-label">Senha</label>
-                                    <input type="text" class="form-control" name="senha" id="senha" placeholder="Informe a senha">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                    <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
-                                </div>
-                            </form>    
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </footer>
 
         </main>
 
