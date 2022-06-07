@@ -6,7 +6,14 @@
             
             $cardapio = new cardapio();
 
-            $cardapio->clonar_cardapio($_POST['dia_antigo'], $_POST['dia_novo'], $_POST['tipo']);
+            $cardapio->set_card_tipo($_POST['tipo']);
+            $cardapio->set_card_dia($_POST['dia_antigo']);
+
+            if($cardapio->verificar_dia()){
+
+                $cardapio->clonar_cardapio($_POST['dia_novo']);
+
+            }   
 
     }
 

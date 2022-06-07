@@ -531,7 +531,7 @@
         
         // crud dos cardapios
 
-        public function verificar_dia($dia, $tipo){
+        public function verificar_dia(){
 
             $pdo = $this->connect();
 
@@ -542,8 +542,8 @@
 
                 $resultado = $pdo->prepare($sql);
 
-                    $resultado->bindValue(':dia', $dia);
-                    $resultado->bindValue(':tipo', $tipo);
+                    $resultado->bindValue(':dia', $this->card_dia);
+                    $resultado->bindValue(':tipo', $this->card_tipo);
                 
                 $resultado->execute();
 
@@ -683,51 +683,39 @@
             return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         }
-        
-        // função de clonar cardápio e para verificar se a data de um cardápio já existe
 
-        public function clonar_cardapio($dia_antigo, $dia_atual, $tipo){
+        public function clonar_cardapio($dia_atual){
 
-            if($this->verificar_dia($dia_antigo, $tipo)){
-
-                $pdo = $this->connect();
+            $pdo = $this->connect();
                 
-                    $sql = 'SELECT *
-                            FROM cardapios
-                            WHERE dia = :dia
-                            AND tipo = :tipo';
+                $sql = 'SELECT *
+                        FROM cardapios
+                        WHERE dia = :dia
+                        AND tipo = :tipo';
 
-                    $resultado = $pdo->prepare($sql);
+                $resultado = $pdo->prepare($sql);
 
-                        $resultado->bindValue(':dia', $dia_antigo);
-                        $resultado->bindValue(':tipo', $tipo);
+                    $resultado->bindValue(':dia', $this->card_dia);
+                    $resultado->bindValue(':tipo', $this->card_tipo);
 
-                    $resultado->execute();
+                $resultado->execute();
                 
-                $pdo = $this->disconnect();
+            $resuls = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 
-                $resultado->fetchAll(PDO::FETCH_ASSOC);
-
-                var_dump($resultado);
-                
-                foreach($resultado as $resul){
+            foreach($resuls as $resul){
                     
-                    $this->set_card_tipo($resul['tipo']);
-                    $this->set_card_nutri($resul['nutri']);
-                    $this->set_card_itens($resul['itens']);
-                    $this->set_card_dia($dia_atual);
+                $this->set_card_tipo($resul['tipo']);
+                $this->set_card_nutri($resul['nutri']);
+                $this->set_card_itens($resul['itens']);
+                $this->set_card_dia($dia_atual);
                     
-                    $this->inserir_cardapio();
+                $this->inserir_cardapio();
                     
-                }
-                
-                return true;
-
-            }else{
-            
-                return false;
-            
             }
+
+            $pdo = $this->disconnect();
+                
+            return true;
 
         }
         
