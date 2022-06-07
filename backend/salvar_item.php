@@ -6,6 +6,12 @@
 
         $item = new cardapio();
 
+            if(isset($_POST['id'])){
+
+                $item->set_item_id($_POST['id']);
+
+            }
+
             $item->set_item_nome($_POST['nome']);
             $item->set_item_descr($_POST['descr']);
             $item->set_item_ingr($_POST['ingr']);

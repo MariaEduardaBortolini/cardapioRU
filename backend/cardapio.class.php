@@ -530,12 +530,42 @@
         }
         
         // crud dos cardapios
+
+        public function verificar_dia($dia, $tipo){
+
+            $pdo = $this->connect();
+
+                $sql = 'SELECT *
+                        FROM cardapios
+                        WHERE dia = :dia
+                        AND tipo = :tipo';
+
+                $resultado = $pdo->prepare($sql);
+
+                    $resultado->bindValue(':dia', $dia);
+                    $resultado->bindValue(':tipo', $tipo);
+                
+                $resultado->execute();
+
+            $pdo = $this->disconnect();
+            
+            if($resultado->rowCount() == 0){
+                
+                return false;
+                
+            }else{
+                
+                return true;
+                
+            }
+
+        }
         
         public function inserir_cardapio(){
 
             $pdo = $this->connect();
 
-                if($this->item_id !== null && $this->item_id != ''){
+                if($this->card_id !== null && $this->card_id != ''){
 
                     $sql = 'UPDATE cardapios
                             SET tipo = :tipo, dia = :dia, itens = :itens, nutri = :nutri
@@ -655,56 +685,32 @@
         }
         
         // função de clonar cardápio e para verificar se a data de um cardápio já existe
-        
-        public function verificar_dia($dia){
 
-            $pdo = $this->connect();
+        public function clonar_cardapio($dia_antigo, $dia_atual, $tipo){
 
-                $sql = 'SELECT *
-                        FROM cardapios
-                        WHERE dia = :dia';
-
-                $resultado = $pdo->prepare($sql);
-
-                    $resultado->bindValue(':dia', $dia);
-                
-                $resultado->execute();
-
-            $pdo = $this->disconnect();
-            
-            if($resultado->rowCount() == 0){
-                
-                return true;
-                
-            }else{
-                
-                return false;
-                
-            }
-
-        }
-
-        public function clonar_cardapio($dia_antigo, $dia_atual){
-
-            if($this->verificar_dia($dia_atual)){
+            if($this->verificar_dia($dia_antigo, $tipo)){
 
                 $pdo = $this->connect();
                 
                     $sql = 'SELECT *
                             FROM cardapios
-                            WHERE dia = :dia';
+                            WHERE dia = :dia
+                            AND tipo = :tipo';
 
                     $resultado = $pdo->prepare($sql);
 
                         $resultado->bindValue(':dia', $dia_antigo);
+                        $resultado->bindValue(':tipo', $tipo);
 
-                    $resultados = $resultado->execute();
+                    $resultado->execute();
                 
                 $pdo = $this->disconnect();
                 
-                $resultados->fetchAll(PDO::FETCH_ASSOC);
+                $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+                var_dump($resultado);
                 
-                foreach($resultados as $resul){
+                foreach($resultado as $resul){
                     
                     $this->set_card_tipo($resul['tipo']);
                     $this->set_card_nutri($resul['nutri']);

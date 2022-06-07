@@ -6,6 +6,12 @@
 
         $ingrediente = new cardapio();
 
+            if(isset($_POST['id'])){
+
+                $ingrediente->set_ingr_id($_POST['id']);
+
+            }
+
             $ingrediente->set_ingr_nome($_POST['nome']);
             $ingrediente->set_ingr_descr($_POST['descr']);
             $ingrediente->set_ingr_calorias($_POST['calorias']);

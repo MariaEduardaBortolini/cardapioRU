@@ -6,6 +6,12 @@
 
         $usuario = new usuario();
 
+        if(isset($_POST['id'])){
+
+            $usuario->set_id($_POST['id']);
+
+        }
+
         $usuario->set_nome($_POST['nome']);
         $usuario->set_email($_POST['email']);
         $usuario->set_senha($_POST['senha']);
