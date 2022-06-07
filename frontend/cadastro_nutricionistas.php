@@ -45,7 +45,7 @@
                                     <input type="text" class="form-control" name="crn" id="crn" placeholder="Informe o CRN">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                                     <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
                                 </div>
                             </form>
