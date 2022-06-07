@@ -49,7 +49,7 @@
                         <input type="text" class="form-control" name="senha" id="senha" placeholder="Informe a senha">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                         <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
                     </div>
                 </form> 
