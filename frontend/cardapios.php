@@ -94,7 +94,8 @@
                                     $array = json_decode($cardapio['itens'], true);
 
                                     $c = 1;
-				    $soma_calorias = 0;
+                                    $soma_calorias = 0;
+
                                     foreach($array as $id_item){
 
                                         $d = '';
@@ -161,6 +162,10 @@
                                 <form method="POST" action="../backend/excluir_cardapio.php">
                                     <input type="hidden" name="id" value="<?php echo $cardapio['id']; ?>">
                                     <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
+                                <form method="POST" action="../frontend/cadastro_cardapios.php">
+                                    <input type="hidden" name="id" value="<?php echo $cardapio['id']; ?>">
+                                    <button type="submit" class="btn btn-primary">Editar</button>
                                 </form>
                             </td>
                         </tr>

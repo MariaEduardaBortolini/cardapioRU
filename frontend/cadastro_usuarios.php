@@ -1,12 +1,28 @@
 <?php
 
-    include '../backend/cardapio.class.php';
+    include '../backend/usuario.class.php';
 
     session_start();
 
     if($_SESSION['logado'] !== true){
 
         header('location: login.php');
+
+    }
+
+    if(isset($_POST['id'])){
+
+        $user = new usuario();
+        $user->set_id($_POST['id']);
+
+        $usuarios = $user->listar();
+
+        foreach($usuarios as $usuario){
+
+            $nome = $usuario['nome'];
+            $email = $usuario['email'];
+
+        }
 
     }
 
@@ -38,11 +54,11 @@
                 <form method="POST" action="../backend/salvar_usuario.php"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome" value="<?php if(isset($nome)){ echo $nome; } ?>">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Informe o email">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Informe o email" value="<?php if(isset($email)){ echo $email; } ?>">
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha</label>

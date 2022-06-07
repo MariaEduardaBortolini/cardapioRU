@@ -69,6 +69,10 @@
                                     <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
                                     <button type="submit" class="btn btn-danger">Excluir</button>
                                 </form>
+                                <form method="POST" action="../frontend/cadastro_usuarios.php">
+                                    <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                </form>
                             </td>
                         </tr>
                         

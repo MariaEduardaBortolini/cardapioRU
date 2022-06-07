@@ -10,6 +10,22 @@
 
     }
 
+    if(isset($_POST['id'])){
+
+        $nutricionista = new cardapio();
+        $nutricionista->set_nutri_id($_POST['id']);
+
+        $nutris = $nutricionista->listar_nutri();
+
+        foreach($nutris as $nutri){
+
+            $nome = $nutri['nome'];
+            $crn = $nutri['crn'];
+
+        }
+
+    }
+
 ?>
 
 <!doctype html>
@@ -36,19 +52,19 @@
             <div class="col bg-light p-5 rounded">
                 <h1>Cadastro Nutricionistas</h1>
                 <form method="POST" action="../backend/salvar_nutricionista.php">
-                                <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="crn" class="form-label">CRN</label>
-                                    <input type="text" class="form-control" name="crn" id="crn" placeholder="Informe o CRN">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                    <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
-                                </div>
-                            </form>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome" value="<?php if(isset($nome)){ echo $nome; } ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="crn" class="form-label">CRN</label>
+                        <input type="text" class="form-control" name="crn" id="crn" placeholder="Informe o CRN" value="<?php if(isset($crn)){ echo $crn; } ?>">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
             </div>
 			
             <footer class="py-5">

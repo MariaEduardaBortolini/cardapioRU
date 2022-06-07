@@ -73,6 +73,10 @@
                                     <input type="hidden" name="id" value="<?php echo $ingrediente['id']; ?>">
                                     <button type="submit" class="btn btn-danger">Excluir</button>
                                 </form>
+                                <form method="POST" action="../frontend/cadastro_ingredientes.php">
+                                    <input type="hidden" name="id" value="<?php echo $ingrediente['id']; ?>">
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                </form>
                             </td>
                         </tr>
                         

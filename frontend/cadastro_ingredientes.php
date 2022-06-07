@@ -10,6 +10,23 @@
 
     }
 
+    if(isset($_POST['id'])){
+
+        $i = new cardapio();
+        $i->set_ingr_id($_POST['id']);
+
+        $ingrs = $i->listar_ingr();
+
+        foreach($ingrs as $ingr){
+
+            $nome = $ingr['nome'];
+            $descr = $ingr['descr'];
+            $calorias = $ingr['calorias'];
+
+        }
+
+    }
+
 ?>
 
 <!doctype html>
@@ -38,15 +55,15 @@
                 <form method="POST" action="../backend/salvar_ingrediente.php">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome" value="<?php if(isset($nome)){ echo $nome; } ?>">
                     </div>
                     <div class="mb-3">
                         <label for="descr" class="form-label">Descrição</label>
-                        <textarea name="descr" class="form-control" placeholder="Informe uma descrição"></textarea>
+                        <textarea name="descr" class="form-control" placeholder="Informe uma descrição"><?php if(isset($descr)){ echo $descr; } ?></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="calorias" class="form-label">Calorias</label>
-                        <input type="number" class="form-control" id="calorias" name="calorias" placeholder="Informe as calorias">
+                        <input type="number" class="form-control" id="calorias" name="calorias" placeholder="Informe as calorias" value="<?php if(isset($calorias)){ echo $calorias; } ?>">
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
