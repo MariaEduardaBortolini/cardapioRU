@@ -94,7 +94,7 @@
                                     $array = json_decode($cardapio['itens'], true);
 
                                     $c = 1;
-
+				    $soma_calorias = 0;
                                     foreach($array as $id_item){
 
                                         $d = '';
@@ -110,7 +110,6 @@
                                             $array2 = json_decode($r['ingr'], true);
 
                                             //$k = 1;
-                                            $soma_calorias = 0;
 
                                             foreach($array2 as $id_ingr){
 
