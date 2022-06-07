@@ -92,7 +92,7 @@
                         </div>
                         <input type="hidden" name="item" id="item">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                             <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
