@@ -1,3 +1,20 @@
+<?php
+
+    session_start();
+
+    if(isset($_SESSION['logado'])){
+
+        if($_SESSION['logado'] === true){
+
+            header('location: cardapios.php');
+
+        }
+
+    }
+
+    
+
+?>
 <!doctype html>
 <html lang="en">
     <head>

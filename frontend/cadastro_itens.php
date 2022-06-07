@@ -10,6 +10,24 @@
 
     }
 
+    if(isset($_POST['id'])){
+
+        $i = new cardapio();
+        $i->set_item_id($_POST['id']);
+
+        $itens = $i->listar_item();
+
+        foreach($itens as $item){
+
+            $id = $item['id'];
+            $nome = $item['nome'];
+            $descr = $item['descr'];
+            $ingrs1 = json_decode($card['ingr'], true);
+
+        }
+
+    }
+
 ?>
 
 <!doctype html>
@@ -36,35 +54,76 @@
             <div class="col bg-light p-5 rounded">
                 <h1>Cadastro Itens</h1>
                 <form method="POST" action="../backend/salvar_item.php">
+                    <?php if(isset($id)){ ?>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <?php } ?>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome" value="<?php if(isset($nome)){ echo $nome; } ?>">
                     </div>
                     <div class="mb-3">
                         <label for="descr" class="form-label">Descrição</label>
-                        <input type="text" class="form-control" id="descr" name="descr" placeholder="Informe a descrição">
+                        <input type="text" class="form-control" id="descr" name="descr" placeholder="Informe a descrição" value="<?php if(isset($descr)){ echo $descr; } ?>">
                     </div>
                     <div class="mb-3" id="select_ingr"> 
                         <label for="ingrs" class="form-label">Ingredientes</label>
                         <button class="btn" id="mais">Adiconar Mais</button>
-                        <select class="form-control ingrs" id="ingr0">
-                            <option value="0" selected>Selecione um ingrediente</option>
-                            <?php
+                        <?php
 
-                                $card = new cardapio();
-                                                        
-                                $ingredientes = $card->listar_ingr();
+                            if(isset($itens1)){
 
-                                foreach($ingredientes as $ingrediente){
+                                $c = 0;
 
-                            ?>
-                                <option value="<?php echo $ingrediente['id']; ?>"><?php echo $ingrediente['nome']; ?></option>
-                            <?php
+                                foreach($ingrs1 as $ingr1){
+                            
+                        ?>
+                            <select class="form-control ingrs" id="<?php echo 'ingr'.$c ?>">
+                                <option value="0" selected>Selecione um ingrediente</option>
+                                <?php
+
+                                    $card = new cardapio();
+                                                            
+                                    $ingredientes = $card->listar_ingr();
+
+                                    foreach($ingredientes as $ingrediente){
+
+                                ?>
+                                    <option value="<?php echo $ingrediente['id']; ?>" <?php if(isset($ingr1)){ if($ingr1 == $ingrediente['id']){ echo 'selected'; }} ?>><?php echo $ingrediente['nome']; ?></option>
+                                <?php
+
+                                    }
+
+                                ?>
+                            </select>
+                        <?php 
+                                    $c++;
 
                                 }
 
-                            ?>
-                        </select>
+                            }else{
+                            
+                        ?>
+                            <select class="form-control ingrs" id="ingr0">
+                                <option value="0" selected>Selecione um ingrediente</option>
+                                <?php
+
+                                    $card = new cardapio();
+                                                            
+                                    $ingredientes = $card->listar_ingr();
+
+                                    foreach($ingredientes as $ingrediente){
+
+                                ?>
+                                    <option value="<?php echo $ingrediente['id']; ?>"><?php echo $ingrediente['nome']; ?></option>
+                                <?php
+
+                                    }
+
+                                ?>
+                            </select>
+                        <?php
+                            }
+                        ?>
                     </div> 
                         <input type="hidden" name="ingr" id="ingr">
                     <div class="modal-footer">
@@ -87,7 +146,7 @@
 
             var btn = document.getElementById('mais');
             let ingr = document.getElementById('ingr0');
-            var c = 1;
+            var c = <?php if(isset($c)){ echo $c + 1; }else{ echo '1'; } ?>;
 
             btn.onclick = function(){
 

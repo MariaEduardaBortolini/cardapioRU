@@ -19,6 +19,7 @@
 
         foreach($nutris as $nutri){
 
+            $id = $nutri['id'];
             $nome = $nutri['nome'];
             $crn = $nutri['crn'];
 
@@ -52,6 +53,9 @@
             <div class="col bg-light p-5 rounded">
                 <h1>Cadastro Nutricionistas</h1>
                 <form method="POST" action="../backend/salvar_nutricionista.php">
+                    <?php if(isset($id)){ ?>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <?php } ?>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome" value="<?php if(isset($nome)){ echo $nome; } ?>">

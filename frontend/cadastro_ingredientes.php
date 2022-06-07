@@ -19,6 +19,7 @@
 
         foreach($ingrs as $ingr){
 
+            $id = $ingr['id'];
             $nome = $ingr['nome'];
             $descr = $ingr['descr'];
             $calorias = $ingr['calorias'];
@@ -53,6 +54,9 @@
             <div class="col bg-light p-5 rounded">
                 <h1>Cadastro Ingredientes</h1>
                 <form method="POST" action="../backend/salvar_ingrediente.php">
+                    <?php if(isset($id)){ ?>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <?php } ?>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome" value="<?php if(isset($nome)){ echo $nome; } ?>">

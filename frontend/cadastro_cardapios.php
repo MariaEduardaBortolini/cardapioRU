@@ -19,10 +19,11 @@
 
         foreach($cards as $card){
 
+            $id = $card['id'];
             $tipo = $card['tipo'];
             $dia = $card['dia'];
             $nutri1 = $card['nutri'];
-            $itens1 = $card['itens'];
+            $itens1 = json_decode($card['itens'], true);
 
         }
 
@@ -52,8 +53,11 @@
         <main class="container">
         
             <div class="col bg-light p-5 rounded">
-                <h1>Cadastro Caerdápios</h1>
+                <h1>Cadastro Cardápios</h1>
                 <form method="POST" action="../backend/salvar_cardapio.php">
+                    <?php if(isset($id)){ ?>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <?php } ?>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Tipo</label>
@@ -65,12 +69,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="data" class="form-label">Data</label>
-                            <input type="date" name="dia">
+                            <input type="date" name="dia" value="<?php if(isset($dia)){ echo $dia; } ?>">
                         </div>
                         <div class="mb-3">
                             <label for="nutri" class="form-label">Nutricionista</label>
                             <select class="form-control" id="nutri" name="nutri">
-                                <option value="0" <?php if(!isset($nutri1){ echo 'selected'; } ?>>Selecione uma nutricionista</option>
+                                <option value="0" <?php if(!isset($nutri1)){ echo 'selected'; } ?>>Selecione uma nutricionista</option>
                                 <?php
 
                                     $card = new cardapio();
@@ -82,7 +86,7 @@
                                     foreach($nutris as $nutri){
 
                                 ?>
-                                    <option value="<?php echo $nutri['id']; ?>" <?php if(isset($nutri1)){ if($nutri1 == $nutri['id']){ echo 'selected'; } ?>><?php echo $nutri['nome']; ?></option>
+                                    <option value="<?php echo $nutri['id']; ?>" <?php if(isset($nutri1)){ if($nutri1 == $nutri['id']){ echo 'selected'; }} ?>><?php echo $nutri['nome']; ?></option>
                                 <?php
 
                                     }
@@ -97,17 +101,19 @@
 
                                 if(isset($itens1)){
 
-                                    foreach($itens1 as item1){
+                                    $c = 0;
+
+                                    foreach($itens1 as $item1){
                             
                             ?>
-                                <select class="form-control itens" id="item0">
+                                <select class="form-control itens" id="<?php echo 'item'.$c ?>">
                                     <option value="0" selected>Selecione um item</option>
                                     <?php
 
                                         foreach($itens as $item){
 
                                     ?>
-                                        <option value="<?php echo $item['id']; ?>" <?php if(isset($item1)){ if($item1 == $item['id']){ echo 'selected'; } ?>><?php echo $item['nome']; ?></option>
+                                        <option value="<?php echo $item['id']; ?>" <?php if(isset($item1)){ if($item1 == $item['id']){ echo 'selected'; } } ?>><?php echo $item['nome']; ?></option>
                                     <?php
 
                                         }
@@ -115,6 +121,8 @@
                                     ?>
                                 </select>
                             <?php 
+                                        $c++;
+
                                     }
 
                                 }else{
@@ -149,6 +157,36 @@
                         </div>
                     </div>
                 </form>
+                <?php
+                
+                    if(!isset($id)){
+                ?>
+                    <h1>Clonar Cardápio</h1>
+                    <form action="../backend/clonar_cardapio.php" method="POST">
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <select class="form-control" id="tipo" name="tipo">
+                                <option value="cafe">Café da Manhã</option>
+                                <option value="almoco">Almoço</option>
+                                <option value="janta">Janta</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dia_antigo" class="form-label">Data Antiga</label>
+                            <input type="date" name="dia_antigo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dia_novo" class="form-label">Data Nova</label>
+                            <input type="date" name="dia_novo">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
+                <?php
+                    }
+                ?>
             </div>
 			
             <footer class="py-5">
@@ -164,7 +202,7 @@
 
             var btn = document.getElementById('mais');
             let item = document.getElementById('item0');
-            var c = 1;
+            var c = <?php if(isset($c)){ echo $c + 1; }else{ echo '1'; } ?>;
 
             btn.onclick = function(){
 
