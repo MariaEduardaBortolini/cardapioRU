@@ -49,7 +49,7 @@
                         <input type="number" class="form-control" id="calorias" name="calorias" placeholder="Informe as calorias">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                         <button id="salvar" type="submit" class="btn btn-success">Salvar</button>
                     </div>
                 </form>
