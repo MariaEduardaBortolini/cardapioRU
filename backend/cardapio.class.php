@@ -620,35 +620,45 @@
         }
 
         public function listar_cardapio(){
-
+     
             $pdo = $this->connect();
-
-                if($this->card_id !== null && $this->card_id != ''){
-
-                    $sql = 'SELECT * FROM cardapios
-                            WHERE id = :id';
-
-                }else{
-
-                    $sql = 'SELECT * FROM cardapios';
-
-                }
-
-                $resultado = $pdo->prepare($sql);
-                    
-                    if($this->card_id !== null && $this->card_id != ''){
-
-                        $resultado->bindValue(':id', $this->card_id);
-                    
-                    }
-                    
-                $resultado->execute();
-                
-            $pdo = $this->disconnect();
             
-            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+            if($this->card_id !== null && $this->card_id != ''){
+              
+              $sql = 'SELECT * FROM cardapios WHERE id = :id';
+                      
+            }else if($this->card_dia !== null && $this->card_dia != ''){
+ 
+                 $sql = 'SELECT * FROM cardapios
+                       WHERE dia = :dia';
+  
+            }else{ 
+         
+            $sql = 'SELECT * FROM cardapios'; 
+         
+            } 
+         
+            $resultado = $pdo->prepare($sql); 
 
+            if($this->card_id !== null && $this->card_id != ''){ 
+         
+            $resultado->bindValue(':id', $this->card_id); 
+
+            }
+
+            if($this->card_dia !== null && $this->card_dia != ''){ 
+         
+             $resultado->bindValue(':dia', $this->card_dia); 
+            } 
+
+            $resultado->execute(); 
+ 
+            $pdo = $this->disconnect(); 
+
+            return $resultado->fetchAll(PDO::FETCH_ASSOC); 
+         
         }
+       
         
         public function busca_cardapio($pesquisa){
 
