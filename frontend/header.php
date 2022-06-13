@@ -25,7 +25,7 @@
                     <a class="nav-link" href="ingredientes.php">Ingredientes</a>
                 </li>
             </ul>
-            <form class="d-flex">
+            <form method="GET" name="p" action=" " class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
             </form>
