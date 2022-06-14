@@ -72,14 +72,8 @@
                             <td><?php echo $nutri['nome']; ?></td>
                             <td><?php echo $nutri['crn']; ?></td>
                             <td>
-                                <form method="POST" action="../backend/excluir_nutricionista.php">
-                                    <input type="hidden" name="id" value="<?php echo $nutri['id']; ?>">
-                                    <button type="submit" class="btn btn-danger">Excluir</button>
-                                </form>
-                                <form method="POST" action="../frontend/cadastro_nutricionistas.php">
-                                    <input type="hidden" name="id" value="<?php echo $nutri['id']; ?>">
-                                    <button type="submit" class="btn btn-primary">Editar</button>
-                                </form>
+                                <button type="button" class="btn btn-danger" onclick="exclu('<?php echo $nutri['id']; ?>')">Excluir</button>
+                                <button type="button" class="btn btn-primary" onclick="edit('<?php echo $nutri['id']; ?>')">Editar</button>
                             </td>
                         </tr>
                         
@@ -102,5 +96,20 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="scripts.js"></script>
+        <script>
+            
+            function exclu(n){
+
+                window.location = '../backend/excluir_nutricionista.php?id=' + n;
+
+            }
+
+            function edit(n){
+
+                window.location = 'cadastro_nutricionistas.php?id=' + n;
+
+            }
+
+        </script>
     </body>
 </html>

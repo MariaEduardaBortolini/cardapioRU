@@ -10,10 +10,10 @@
 
     }
 
-    if(isset($_POST['id'])){
+    if(isset($_GET['id'])){
 
         $i = new cardapio();
-        $i->set_item_id($_POST['id']);
+        $i->set_item_id($_GET['id']);
 
         $itens = $i->listar_item();
 
@@ -22,7 +22,7 @@
             $id = $item['id'];
             $nome = $item['nome'];
             $descr = $item['descr'];
-            $ingrs1 = json_decode($card['ingr'], true);
+            $ingrs1 = json_decode($item['ingr'], true);
 
         }
 
@@ -70,7 +70,7 @@
                         <button class="btn" id="mais">Adiconar Mais</button>
                         <?php
 
-                            if(isset($itens1)){
+                            if(isset($ingrs1)){
 
                                 $c = 0;
 

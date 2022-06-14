@@ -10,10 +10,10 @@
 
     }
 
-    if(isset($_POST['id'])){
+    if(isset($_GET['id'])){
 
         $c = new cardapio();
-        $c->set_card_id($_POST['id']);
+        $c->set_card_id($_GET['id']);
 
         $cards = $c->listar_cardapio();
 

@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cardapios.php">Cardápio</a>
@@ -25,8 +25,8 @@
                     <a class="nav-link" href="ingredientes.php">Ingredientes</a>
                 </li>
             </ul>
-            <form method="GET" name="p" action=" " class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <form method="GET" action=" " class="d-flex">
+                <input class="form-control me-2" type="search" name="p" placeholder="Pesquisar" aria-label="Pesquisar">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
             </form>
                 </div>

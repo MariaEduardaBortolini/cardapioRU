@@ -29,8 +29,8 @@
                     <a class="nav-link active" aria-current="page" href="login.php">Login</a>
                 </li>
             </ul>
-            <form method="GET" name="p" action=" " class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <form method="GET" action="" class="d-flex">
+                <input class="form-control me-2" type="search" name="p" placeholder="Pesquisar" aria-label="Pesquisar">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
             </form>
                 </div>
@@ -50,13 +50,14 @@
               $infos = new cardapio();
 
               if(isset($_GET['p'])){
-                 if(strtotime($_GET['p'])){
-                   
-                $d1 = date('Y-m-d', strtotime(str_replace('/','-',$_GET['p'])));
-                 }else{
 
+                $d1 = date('Y-m-d', strtotime(str_replace('/', '-', $_GET['p'])));
+
+                if(!strtotime($d1)){
+                   
                   $d1 = date('Y-m-d');
-                 }
+
+                }
   
               }else{
 

@@ -10,10 +10,10 @@
 
     }
 
-    if(isset($_POST['id'])){
+    if(isset($_GET['id'])){
 
         $i = new cardapio();
-        $i->set_ingr_id($_POST['id']);
+        $i->set_ingr_id($_GET['id']);
 
         $ingrs = $i->listar_ingr();
 

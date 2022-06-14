@@ -10,10 +10,10 @@
 
     }
 
-    if(isset($_POST['id'])){
+    if(isset($_GET['id'])){
 
         $nutricionista = new cardapio();
-        $nutricionista->set_nutri_id($_POST['id']);
+        $nutricionista->set_nutri_id($_GET['id']);
 
         $nutris = $nutricionista->listar_nutri();
 

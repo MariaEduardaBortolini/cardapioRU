@@ -164,14 +164,8 @@
                             </td>
                             <td><?php echo $soma_calorias; ?></td>
                             <td>
-                                <form method="POST" action="../backend/excluir_cardapio.php">
-                                    <input type="hidden" name="id" value="<?php echo $cardapio['id']; ?>">
-                                    <button type="submit" class="btn btn-danger">Excluir</button>
-                                </form>
-                                <form method="POST" action="../frontend/cadastro_cardapios.php">
-                                    <input type="hidden" name="id" value="<?php echo $cardapio['id']; ?>">
-                                    <button type="submit" class="btn btn-primary">Editar</button>
-                                </form>
+                                <button type="button" class="btn btn-danger" onclick="exclu('<?php echo $cardapio['id']; ?>')">Excluir</button>
+                                <button type="button" class="btn btn-primary" onclick="edit('<?php echo $cardapio['id']; ?>')">Editar</button>
                             </td>
                         </tr>
                         <?php
@@ -191,5 +185,20 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="scripts.js"></script>
+        <script>
+            
+            function exclu(n){
+
+                window.location = '../backend/excluir_cardapio.php?id=' + n;
+
+            }
+
+            function edit(n){
+
+                window.location = 'cadastro_cardapios.php?id=' + n;
+
+            }
+
+        </script>
     </body>
 </html>

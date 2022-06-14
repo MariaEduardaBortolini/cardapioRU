@@ -10,10 +10,10 @@
 
     }
 
-    if(isset($_POST['id'])){
+    if(isset($_GET['id'])){
 
         $user = new usuario();
-        $user->set_id($_POST['id']);
+        $user->set_id($_GET['id']);
 
         $usuarios = $user->listar();
 
