@@ -50,12 +50,13 @@
               $infos = new cardapio();
 
               if(!isset($_GET['p'])){
-
-                $d1 = date('Y-m-d');
+                 if(strtotime($_GET['p'])){
+                   
+                $d1 = date('Y-m-d', strtotime(str_replace('/','-',$_GET['p'])));
 
               }else{
 
-                $d1 = date('Y-m-d', strtotime($_GET['p']));
+                $d1 = date('Y-m-d')
 
               }
 
