@@ -58,8 +58,12 @@
                         <?php
                             
                             $card = new cardapio();
-                        
-                            $ingredientes = $card->listar_ingr();
+                            if(isset($_GET['p'])){
+                                $ingredientes = $card->busca_ingr($_GET['p']);
+                            }else{
+                                $ingredientes = $card->listar_ingr();
+                            }
+                          
                         
                             foreach($ingredientes as $ingrediente){
                         ?>
