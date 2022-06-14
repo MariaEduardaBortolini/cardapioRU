@@ -58,7 +58,12 @@
                             
                             $card = new cardapio();
                         
-                            $nutris = $card->listar_nutri();
+                            if(isset($_GET['p'])){
+                                $nutris = $card->busca_nutri($_GET['p']);
+                            }else{
+                                $nutris = $card->listar_nutri();
+                            }
+                          
                         
                             foreach($nutris as $nutri){
                         ?>
