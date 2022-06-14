@@ -56,8 +56,12 @@
                             
                             $card = new usuario();
                         
-                            $usuarios = $card->listar();
-                        
+                            
+                            if(isset($_GET['p'])){
+                                $usuarios = $card->busca($_GET['p']);
+                            }else{
+                                $usuarios = $card->listar();
+                            }
                             foreach($usuarios as $usuario){
                         ?>
                         
