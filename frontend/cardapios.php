@@ -60,8 +60,13 @@
                                 
                             $infos = new cardapio();
 
-                            $cardapios = $infos->listar_cardapio();
-                            
+                            if(isset($_GET['p'])){
+                                $cardapios = $infos->busca_cardapio($_GET['p']);
+                            }else{
+                                $cardapios = $infos->listar_cardapio();
+                            }
+                          
+                        
                             $ingredientes = $infos->listar_ingr();
                                 
                             $itens = $infos->listar_item();

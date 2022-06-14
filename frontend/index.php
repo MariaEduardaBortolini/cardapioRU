@@ -49,14 +49,18 @@
 
               $infos = new cardapio();
 
-              if(!isset($_GET['p'])){
+              if(isset($_GET['p'])){
                  if(strtotime($_GET['p'])){
                    
                 $d1 = date('Y-m-d', strtotime(str_replace('/','-',$_GET['p'])));
+                 }else{
 
+                  $d1 = date('Y-m-d');
+                 }
+  
               }else{
 
-                $d1 = date('Y-m-d')
+                $d1 = date('Y-m-d');
 
               }
 
