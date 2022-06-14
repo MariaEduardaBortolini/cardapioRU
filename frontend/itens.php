@@ -61,8 +61,13 @@
                             $card = new cardapio();
                         
                             $ingredientes = $card->listar_ingr();
-                            
-                            $itens = $card->listar_item();
+
+                            if(isset($_GET['p'])){
+                                $itens = $card->busca_item($_GET['p']);
+                            }else{
+                                $itens = $card->listar_item();
+                            }
+                          
                         
                             foreach($itens as $item){
                         ?>
