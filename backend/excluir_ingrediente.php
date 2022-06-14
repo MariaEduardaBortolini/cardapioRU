@@ -2,11 +2,11 @@
 
     include_once 'cardapio.class.php';
 
-    if(isset($_POST['id'])){
+    if(isset($_GET['id'])){
 
         $ingrediente = new cardapio();
 
-            $ingrediente->set_ingr_id($_POST['id']);
+            $ingrediente->set_ingr_id($_GET['id']);
 
         $ingrediente->excluir_ingr();
 

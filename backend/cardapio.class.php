@@ -261,8 +261,8 @@
                 if($pesquisa != ''){
 
                     $sql = 'SELECT * FROM ingredientes
-                            WHERE nome = :pesquisa
-                            OR descr = :pesquisa';
+                            WHERE nome LIKE :pesquisa
+                            OR descr LIKE :pesquisa';
 
                 }else{
 
@@ -382,8 +382,8 @@
                 if($pesquisa != ''){
 
                     $sql = 'SELECT * FROM nutricionistas
-                            WHERE nome = :pesquisa
-                            OR crn = :pesquisa';
+                            WHERE nome LIKE :pesquisa
+                            OR crn LIKE :pesquisa';
 
                 }else{
 
@@ -504,8 +504,8 @@
                 if($pesquisa != ''){
 
                     $sql = 'SELECT * FROM itens
-                            WHERE nome = :pesquisa
-                            OR descr = :pesquisa';
+                            WHERE nome LIKE :pesquisa
+                            OR descr LIKE :pesquisa';
 
                 }else{
 
@@ -667,10 +667,10 @@
                 if($pesquisa != ''){
 
                     $sql = 'SELECT * FROM cardapios
-                            WHERE tipo = :pesquisa
-                            OR dia = :pesquisa
-                            OR itens = :pesquisa
-                            OR nutri = :pesquisa';
+                            WHERE tipo LIKE :pesquisa
+                            OR dia LIKE :pesquisa
+                            OR itens LIKE :pesquisa
+                            OR nutri LIKE :pesquisa';
 
                 }else{
 

@@ -142,8 +142,8 @@
                 if($pesquisa != ''){
 
                     $sql = 'SELECT * FROM usuarios
-                            WHERE nome = :pesquisa
-                            OR email = :pesquisa';
+                            WHERE nome LIKE :pesquisa
+                            OR email LIKE :pesquisa';
 
                 }else{
 
