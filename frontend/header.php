@@ -24,11 +24,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="ingredientes.php">Ingredientes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../backend/logout.php">Logout</a>
+                </li>
             </ul>
             <form method="GET" action=" " class="d-flex">
                 <input class="form-control me-2" type="search" name="p" placeholder="Pesquisar" aria-label="Pesquisar">
                 <button class="btn btn-outline-success" type="submit">Pesquisar</button>
             </form>
-                </div>
-            </div>
-        </nav>
+        </div>
+    </div>
+</nav>

@@ -77,7 +77,7 @@
                         ?>
                         <tr>
                             <td><?php echo $cardapio['tipo']; ?></td>
-                            <td><?php echo $cardapio['dia']; ?></td>
+                            <td><?php echo date('d/m/Y', strtotime($cardapio['dia'])); ?></td>
                             <td>
                             <?php
                                 

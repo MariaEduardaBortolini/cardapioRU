@@ -18,21 +18,21 @@
   
      <body>
        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Restaurante</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="login.php">Login</a>
-                </li>
-            </ul>
-            <form method="GET" action="" class="d-flex">
-                <input class="form-control me-2" type="search" name="p" placeholder="Pesquisar" aria-label="Pesquisar">
-                <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-            </form>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Restaurante</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+                      </li>
+                  </ul>
+                  <form method="GET" action="" class="d-flex">
+                      <input class="form-control me-2" type="search" name="p" placeholder="Pesquisar" aria-label="Pesquisar">
+                      <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                  </form>
                 </div>
             </div>
         </nav>
@@ -51,11 +51,19 @@
 
               if(isset($_GET['p'])){
 
-                $d1 = date('Y-m-d', strtotime(str_replace('/', '-', $_GET['p'])));
+                if($_GET['p'] == '' || $_GET['p'] == ' '){
 
-                if(!strtotime($d1)){
-                   
                   $d1 = date('Y-m-d');
+
+                }else{
+
+                  $d1 = date('Y-m-d', strtotime(str_replace('/', '-', $_GET['p'])));
+
+                  if(!strtotime($d1)){
+                    
+                    $d1 = date('Y-m-d');
+
+                  }
 
                 }
   
